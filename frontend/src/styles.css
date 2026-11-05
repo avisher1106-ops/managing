@@ -724,6 +724,35 @@ input:focus {
   -webkit-backdrop-filter: blur(10px);
 }
 
+/* ---------- iOS / PWA ---------- */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100dvh;
+}
+
+@supports (padding: max(0px)) {
+  .topbar {
+    padding-top: calc(14px + env(safe-area-inset-top));
+    padding-right: calc(clamp(16px, 4vw, 48px) + env(safe-area-inset-right));
+    padding-bottom: 14px;
+    padding-left: calc(clamp(16px, 4vw, 48px) + env(safe-area-inset-left));
+  }
+
+  main {
+    padding-bottom: calc(60px + env(safe-area-inset-bottom));
+  }
+}
+
+@media (display-mode: standalone) {
+  body {
+    overscroll-behavior-y: none;
+  }
+}
+
 /* ---------- Mobile ---------- */
 @media (max-width: 700px) {
   .lists {
@@ -738,6 +767,15 @@ input:focus {
     justify-content: center;
   }
 
+  .topbar nav a {
+    padding: 11px 16px;
+  }
+
+  .theme-toggle {
+    width: 44px;
+    height: 44px;
+  }
+
   .balance-card {
     align-items: flex-start;
   }
@@ -749,6 +787,27 @@ input:focus {
   .balance-meta div {
     flex: 1;
     min-width: 120px;
+  }
+
+  .btn {
+    min-height: 46px;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  input[type="month"] {
+    font-size: 16px;
+  }
+
+  .icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .check {
+    width: 36px;
+    height: 36px;
   }
 }
 
